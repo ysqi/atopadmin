@@ -56,8 +56,7 @@ module.exports = function (options) {
     entry: {
       'polyfills': './src/polyfills.browser.ts',
       'vendor': './src/vendor.browser.ts',
-      'main': './src/main.browser.ts',
-      'font-awesome':'font-awesome-webpack!./config/font-awesome.config.js',
+      'main': './src/main.browser.ts', 
     },
 
     /*
@@ -122,7 +121,7 @@ module.exports = function (options) {
         {   test: /\.css$/, loaders: ['to-string-loader', 'css-loader']  },
 
         // { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery' },
-        { test: /bootstrap\/js\//, loader: 'imports-loader?jQuery=jquery' },
+        // { test: /bootstrap\/js\//, loader: 'imports-loader?jQuery=jquery' },
 
         /* Raw loader support for *.html
          * Returns file content as string
@@ -218,7 +217,9 @@ module.exports = function (options) {
        */
       new CopyWebpackPlugin([
         { from: 'src/assets', to: 'assets' },
-        { from: 'src/meta' }
+        { from: 'src/meta' },
+        { from: 'node_modules/gentelella/vendors/', to: 'assets/vendors/' },
+        { from: 'node_modules/gentelella/build/',  to: 'assets/vendors/gentelella' },
       ]),
 
 
