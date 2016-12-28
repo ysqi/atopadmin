@@ -3,11 +3,7 @@
  */
 import { Component, ViewEncapsulation } from '@angular/core';
 import { AppState } from './app.service';
-
-import 'bootstrap';
-import 'style-loader!css-loader!less-loader!font-awesome-webpack/font-awesome-styles.loader!font-awesome-webpack/font-awesome.config.js';
-import '../vendors/gentelella/custom.js';
-
+ 
 /*
  * App Component
  * Top Level Component

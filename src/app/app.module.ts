@@ -2,9 +2,9 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, PreloadAllModules } from '@angular/router';
+import { RouterModule, PreloadAllModules} from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
-
+import { LocationStrategy, PathLocationStrategy} from '@angular/common';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -14,6 +14,21 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
+
+import { SidebarMenuComponent} from  './menu/sidebar-menu.component';
+import { SidebarTopComponent} from  './menu/sidebar-top.component';
+import { FooterComponent} from  './menu/footer.component';
+import { TopNavComponent} from  './menu/top-nav.component';
+import { SidebarFooterComponent} from  './menu/sidebar-footer.component';
+import { LayoutComponent } from './menu/layout.component';
+
+import { IndexComponent} from   './components/index/index.component';
+
+import { Error404Component} from   './components/error/error-404.component';
+
+// service
+import  { AuthService} from './services/auth.service'
+
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -33,6 +48,9 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
+    SidebarMenuComponent,FooterComponent,TopNavComponent,SidebarTopComponent,SidebarFooterComponent,LayoutComponent,
+    Error404Component,
+    IndexComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -42,7 +60,9 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    {provide: LocationStrategy, useClass: PathLocationStrategy},
+    AuthService
   ]
 })
 export class AppModule {

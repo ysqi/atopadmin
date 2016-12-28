@@ -1,0 +1,23 @@
+<div class="col-md-3 left_col">
+    <div class="left_col scroll-view">
+        <app-sidebar-top ></app-sidebar-top>
+        <br>
+        <app-sidebar-menu></app-sidebar-menu>
+        <app-sidebar-footer></app-sidebar-footer>
+    </div>
+</div>
+
+<!-- top navigation -->
+<app-topnav  (onToggleMenu)="onToggleMenu()" ></app-topnav>
+<!-- /top navigation -->
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <!-- Router Outlet -->
+    <router-outlet></router-outlet>
+</div>
+<!-- /page content -->
+
+<!-- footer content -->
+<app-footer></app-footer>
+<!-- /footer content -->

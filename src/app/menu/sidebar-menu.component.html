@@ -1,0 +1,20 @@
+
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+<div class="menu_section">
+        <!--<h3>Test</h3>-->
+     <ul class="nav side-menu">
+            <li *ngFor="let menu of menus" [ngClass]="getMenuLiClass(menu)">  
+                <a *ngIf="!menu.subItems || menu.subItems.length==0" routerLink="{{menu.url}}"><i class="{{menu.iconClass ? menu.iconClass:'f fa fa-folder'}}" ></i> {{menu.title}}</a>
+                <a *ngIf="menu.subItems" (click)="onClickMenu(menu)" >
+                    <i class="{{menu.iconClass ? menu.iconClass:'fa'}}" ></i> {{menu.title}} 
+                    <span class="fa fa-chevron-down"  ></span> 
+                </a>    
+                    <ul class="nav child_menu" [style.display]="isActive(menu)? 'block':'none'" >
+                        <li *ngFor="let sub of menu.subItems" [ngClass]="getMenuLiClass(sub)">
+                            <a routerLink="{{sub.url}}">{{sub.title}}</a>
+                        </li>
+                    </ul>  
+            </li>
+        </ul>
+     </div>  
+</div>
