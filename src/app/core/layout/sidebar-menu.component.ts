@@ -2,8 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 
-import { AuthService } from '../services/auth.service'
-import { MenuData } from '../data/menu';
+import { AuthService } from '../../services/auth.service'
+import { MenuData } from '../../data/menu';
 
 declare var $: any;
 

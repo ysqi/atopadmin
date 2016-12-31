@@ -10,24 +10,15 @@ import { LocationStrategy, PathLocationStrategy} from '@angular/common';
  */
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
+
 // App is our top level component
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 
-import { SidebarMenuComponent} from  './menu/sidebar-menu.component';
-import { SidebarTopComponent} from  './menu/sidebar-top.component';
-import { FooterComponent} from  './menu/footer.component';
-import { TopNavComponent} from  './menu/top-nav.component';
-import { SidebarFooterComponent} from  './menu/sidebar-footer.component';
-import { LayoutComponent } from './menu/layout.component';
+import { IndexComponent} from   './components/index/index.component'; 
 
-import { IndexComponent} from   './components/index/index.component';
-
-import { Error404Component} from   './components/error/error-404.component';
-
-// service
-import  { AuthService} from './services/auth.service'
+import {CoreModule} from './core/core.module'
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -48,21 +39,19 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    SidebarMenuComponent,FooterComponent,TopNavComponent,SidebarTopComponent,SidebarFooterComponent,LayoutComponent,
-    Error404Component,
     IndexComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    CoreModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
-    {provide: LocationStrategy, useClass: PathLocationStrategy},
-    AuthService
+    {provide: LocationStrategy, useClass: PathLocationStrategy}, 
   ]
 })
 export class AppModule {
