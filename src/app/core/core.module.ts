@@ -14,14 +14,14 @@ import { Error404Component} from   './error/error-404.component';
 
 // service
 import  { AuthService} from '../services/auth.service'
-import { CoreRoutes} from './core.routes'
+import { CoreRoutingModule} from './core-routing.module'
 
 
 @NgModule({ 
   imports: [
     CommonModule ,
     HttpModule, 
-    RouterModule.forChild(CoreRoutes), 
+    CoreRoutingModule 
   ],
   exports:[LayoutComponent],
   declarations: [ 
